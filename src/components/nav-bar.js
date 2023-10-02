@@ -31,12 +31,21 @@ class NavBar extends HTMLElement {
         nav ul li a {
           text-decoration: none;
           color: white;
+          padding: 13px;
+          font-size: 18px;
+        }
+
+        nav ul li {
+          displa: flex;
         }
 
         .hamburger {
           display: none;
           flex-direction: column;
           cursor: pointer;
+          background-color: transparent;
+          border: none;
+          padding: 10px;
         }
 
         .hamburger div {
@@ -66,20 +75,24 @@ class NavBar extends HTMLElement {
           nav ul.show {
             display: flex;
           }
+
+          nav ul li {
+            font-size: 23px;
+          }
         }
       </style>
 
       <nav>
         <h1>Saan Mangiare</h1>
-        <div class="hamburger">
+        <button class="hamburger">
           <div></div>
           <div></div>
           <div></div>
-        </div>
+        </button>
         <ul>
-          <li><a href="">Home</a></li>
-          <li><a href="">Favorite</a></li>
-          <li><a href="">About Us</a></li>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Favorite</a></li>
+          <li><a href="https://github.com/Fanarii">About Us</a></li>
         </ul>
       </nav>
     `;

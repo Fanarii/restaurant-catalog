@@ -1,61 +1,63 @@
 import axios from "axios";
+import 'font-awesome/css/font-awesome.min.css';
+
 
 class ContentSection extends HTMLElement {
-    constructor() {
-        super();
-        this.shadowDOM = this.attachShadow({ mode: 'open' });
+  constructor() {
+    super();
+    this.shadowDOM = this.attachShadow({ mode: 'open' });
+  }
+
+  connectedCallback() {
+    this.getData();
+    this.render();
+
+    this.shadowDOM.querySelector('#closeModal').addEventListener('click', () => {
+      const modal = this.shadowDOM.querySelector('.modal');
+      modal.style.display = 'none';
+    });
+  }
+
+  async getData() {
+    try {
+      const response = await axios.get('../data/DATA.json');
+      const data = response.data.restaurants;
+      this.renderCards(data);
+    } catch (error) {
+      console.log(error)
     }
+  }
 
-    connectedCallback() {
-        this.getData();
-        this.render();
+  renderCards(data) {
+    const wrapper = this.shadowDOM.querySelector('.card-wrapper');
+    wrapper.innerHTML = ''
 
-        this.shadowDOM.querySelector('#closeModal').addEventListener('click', () => {
-            const modal = this.shadowDOM.querySelector('.modal');
-            modal.style.display = 'none';
-        });
-    }
+    data.forEach((item) => {
+      const card = document.createElement('button')
+      card.classList.add('card');
 
-    async getData() {
-        try {
-            const response = await axios.get('../data/DATA.json');
-            const data = response.data.restaurants;
-            this.renderCards(data);
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    renderCards(data) {
-        const wrapper = this.shadowDOM.querySelector('.card-wrapper');
-        wrapper.innerHTML = ''
-
-        data.forEach((item) => {
-            const card = document.createElement('button')
-            card.classList.add('card');
-
-            card.innerHTML = `
+      card.innerHTML = `
                 <img src="${item.pictureId}" alt="Cafe 1">
                 <h2>${item.name}</h2>
                 <p>City: ${item.city}</p>
                 <p>Rating: ${item.rating}</p>
             `;
 
-            card.addEventListener('click', () => {
-                const modal = this.shadowDOM.querySelector('.modal');
-                const modalDescription = this.shadowDOM.querySelector('#modalDescription');
-                const modalTitle = this.shadowDOM.querySelector('#modalTitle');
-                modalDescription.textContent = item.description;
-                modalTitle.textContent = item.name;
-                modal.style.display = 'block';
-            });
+      card.addEventListener('click', () => {
+        const modal = this.shadowDOM.querySelector('.modal');
+        const modalDescription = this.shadowDOM.querySelector('#modalDescription');
+        const modalTitle = this.shadowDOM.querySelector('#modalTitle');
+        modalDescription.textContent = item.description;
+        modalTitle.textContent = item.name;
+        modal.style.display = 'block';
+      });
 
-            wrapper.appendChild(card)
-        })
-    }
+      wrapper.appendChild(card)
+    })
+  }
 
-    render() {
-        this.shadowDOM.innerHTML = `
+  render() {
+    this.shadowDOM.innerHTML = `
         <style>
         .content {
             display: flex;
@@ -134,6 +136,11 @@ class ContentSection extends HTMLElement {
             float: right;
             font-size: 28px;
             font-weight: bold;
+            padding: 10px;
+            background-color: transparent;
+            min-width: 44px;
+            min-height: 44px;
+            border: none;
           }
       
           .modal-content p {
@@ -177,13 +184,13 @@ class ContentSection extends HTMLElement {
 
         <div class="modal" id="myModal">
             <div class="modal-content">
-                <span class="close" id="closeModal">&times;</span>
+                <button class="close" id="closeModal">X</button>
                 <h3 id="modalTitle"></h3>
                 <p id="modalDescription"></p>
             </div>
         </div>
         `;
-    }
+  }
 }
 
 customElements.define('content-section', ContentSection);

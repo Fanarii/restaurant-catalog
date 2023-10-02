@@ -10,20 +10,7 @@ class FootBar extends HTMLElement {
 
     render() {
         this.shadowDOM.innerHTML = `
-        <style>
-            footer {
-                background-color: rgb(35, 35, 35);
-                color: white;
-                height: 40px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-        </style>
-        
-        <footer>
             <p>Copyright &copy; Sigit Fajar Desfian 2023</p>
-        </footer>       
         `;
     }
 }

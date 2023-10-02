@@ -1,6 +1,17 @@
 html, body, * {
   margin: 0;
   padding: 0;
+  font-family: sans-serif;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  padding: 8px;
+  background-color: #bf1722;
+  color: white;
+  z-index: 100;
 }
 
 main {
@@ -8,4 +19,13 @@ main {
   flex-direction: column;
   justify-items: center;
   background-color: #E3E3E3;
+}
+
+footer {
+  background-color: rgb(35, 35, 35);
+  color: white;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -67,7 +67,7 @@ class HeroSection extends HTMLElement {
             <div class="hero-content">
             <h1>Welcome to Saan Mangiare</h1>
             <p>Discover Caffe & Restaurants</p>
-            <a href="#content" class="btn">Explore</a>
+            <a href="#maincontent" class="btn">Explore</a>
             </div>
         </section>        
         `;
