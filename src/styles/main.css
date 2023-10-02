@@ -9,9 +9,13 @@ html, body, * {
   top: -40px;
   left: 0;
   padding: 8px;
-  background-color: #bf1722;
+  background-color: #59dfed;
   color: white;
   z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
 }
 
 main {
