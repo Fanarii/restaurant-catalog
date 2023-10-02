@@ -1,5 +1,4 @@
 import axios from "axios";
-import 'font-awesome/css/font-awesome.min.css';
 
 
 class ContentSection extends HTMLElement {
