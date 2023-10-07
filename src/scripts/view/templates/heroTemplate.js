@@ -1,16 +1,5 @@
-class HeroSection extends HTMLElement {
-    constructor() {
-        super();
-        this.shadowDOM = this.attachShadow({ mode: 'open' });
-    }
-
-    connectedCallback() {
-        this.render()
-    }
-
-    render() {
-        this.shadowDOM.innerHTML = `
-        <style>
+const heroTemplate = `
+<style>
             .hero {
             background-size: cover;
             background-position: center;
@@ -69,9 +58,7 @@ class HeroSection extends HTMLElement {
             <p>Discover Caffe & Restaurants</p>
             <a href="#maincontent" class="btn">Explore</a>
             </div>
-        </section>        
-        `;
-    }
-}
+        </section>
+`
 
-customElements.define('hero-section', HeroSection);
+export default heroTemplate
