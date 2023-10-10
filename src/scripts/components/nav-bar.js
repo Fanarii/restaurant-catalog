@@ -1,4 +1,4 @@
-import navbarInitiator from '../utils/navbar-initiator'
+import navbarInitiator from '../utils/navbarInitiator'
 import navTemplate from '../view/templates/navbarTemplate'
 
 class NavBar extends HTMLElement {
@@ -25,3 +25,5 @@ class NavBar extends HTMLElement {
 }
 
 customElements.define('nav-bar', NavBar)
+
+export default NavBar

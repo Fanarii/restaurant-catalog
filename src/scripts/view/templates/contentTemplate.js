@@ -52,45 +52,8 @@ const contentTemplate = `
     transform: scale(1.1)
   }
 
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.7);
-  }
-
-  .modal-content {
-    background-color: #fff;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-  }
-
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    padding: 10px;
-    background-color: transparent;
-    min-width: 44px;
-    min-height: 44px;
-    border: none;
-  }
-
-  .modal-content p {
-    font-size: 1rem;
-    margin-top: 10px;
-  }
-
-  .close {
-    cursor: pointer;
+  .card:focus {
+    transform: scale(1.1)
   }
 
   @media screen and (min-width: 476px) {
@@ -122,14 +85,6 @@ const contentTemplate = `
     <div class="card-wrapper">
     </div>
 </section>
-
-<div class="modal" id="myModal">
-    <div class="modal-content">
-        <button class="close" id="closeModal">X</button>
-        <h3 id="modalTitle"></h3>
-        <p id="modalDescription"></p>
-    </div>
-</div>
 `
 
 export default contentTemplate

@@ -2,10 +2,10 @@ import axios from 'axios'
 import templateCreator from './templateCreator'
 
 const contentInitiator = {
-  async init (shadowDOM) {
+  async init () {
     try {
       const data = await this._getData()
-      this._renderCards(shadowDOM, data)
+      this._renderCards(data)
     } catch (error) {
       console.log(error)
     }
@@ -21,17 +21,14 @@ const contentInitiator = {
     }
   },
 
-  _renderCards (shadowDOM, data) {
-    const wrapper = shadowDOM.querySelector('.card-wrapper')
-    wrapper.innerHTML = ''
+  _renderCards (data) {
+    const contentSection = document.querySelector('content-section')
+    const wrapper = contentSection.shadowRoot.querySelector('.card-wrapper')
+
     data.forEach((item) => {
       const card = document.createElement('button')
       card.classList.add('card')
       card.innerHTML = templateCreator.cardsTemplate(item)
-
-      card.addEventListener('click', () => {
-
-      })
 
       wrapper.appendChild(card)
     })
